@@ -10,7 +10,7 @@ def hello():
 
 @app.route("/user")
 def user():
-    return jsonify({"name": "Natalia"})
+    return jsonify({"name": "Mariusz"})
 
 
 if __name__ == "__main__":
