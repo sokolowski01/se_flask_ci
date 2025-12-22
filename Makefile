@@ -11,7 +11,4 @@ test:
 	python -m unittest discover tests
 
 docker_build:
-	docker build -t sokolowski01/se_flask_ci:latest .
-
-docker_push:
-	docker push sokolowski01/se_flask_ci:latest
+docker build -t hello-world-printer .
