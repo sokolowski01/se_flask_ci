@@ -1,8 +1,10 @@
-from app import app
+import unittest
+from hello_world import app
 
+class HelloWorldTestCase(unittest.TestCase):
+    def setUp(self):
+        self.app = app.test_client()
 
-def test_root():
-    client = app.test_client()
-    resp = client.get("/")
-    assert resp.status_code == 200
-    assert b"Hello" in resp.data
+    def test_hello_world(self):
+        response = self.app.get('/')
+        self.assertIn(b'Hello Mariusz', response.data)
