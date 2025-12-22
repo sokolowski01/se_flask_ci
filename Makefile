@@ -1,19 +1,20 @@
-.PHONY: deps lint test run docker_build docker_push
-
 deps:
-\tpip install -r requirements.txt
+	pip install -r requirements.txt
 
 lint:
-\tflake8 .
-
-test:
-\tpytest
+	flake8 app.py
 
 run:
-\tpython app.py
+	python app.py
+
+test:
+	python -m unittest discover tests
 
 docker_build:
-\tdocker build -t sokolowski01/se_flask_ci:latest .
+docker build -t hello-world-printer .
 
-docker_push:
-\tdocker push sokolowski01/se_flask_ci:latest
+docker_run: docker_build
+docker run \
+	--name hello-world-printer-dev \
+	-p 5000:5000 \
+	-d hello-world-printer

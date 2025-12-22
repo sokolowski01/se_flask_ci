@@ -1,14 +1,14 @@
-FROM python:3.11-slim
+FROM python:3
 
-WORKDIR /app
+ARG APP_DIR=/usr/src/hello_world_printer
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /tmp
+ADD requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
-COPY . .
+RUN mkdir -p $APP_DIR
+ADD hello_world/ $APP_DIR/hello_world/
+ADD main.py $APP_DIR
 
-ENV FLASK_APP=app.py
-
-EXPOSE 5000
-
-CMD ["python", "app.py"]
+CMD PYTHONPATH=$PYTHONPATH:/usr/src/hello_world_printer \
+      FLASK_APP=hello_world flask run --host=0.0.0.0
