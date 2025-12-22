@@ -25,3 +25,8 @@ jobs:
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
             make build_and_push
+
+workflows:
+  sample:
+    jobs:
+      - build-and-test
