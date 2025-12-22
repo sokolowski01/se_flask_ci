@@ -20,5 +20,5 @@ docker_run: docker_build
 		-d hello-world-printer
 
 build_and_push:
-	docker build -t sokolowski01/se_flask_ci:latest .
-	docker push sokolowski01/se_flask_ci:latest
+	docker build -t sokolowski01docker/se_flask_ci:latest .
+	docker push sokolowski01docker/se_flask_ci:latest
