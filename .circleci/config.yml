@@ -25,6 +25,7 @@ jobs:
           command: |
             # Logowanie i wypychanie obrazu
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+            docker build -t sokolowski01/se_flask_ci:latest .
             docker push sokolowski01docker/se_flask_ci:latest
 
 workflows:
